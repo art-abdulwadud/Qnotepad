@@ -2,7 +2,7 @@
 
 [Qnotepad](https://qnotepad.netlify.com/) is a small web-app for saving normal plain notes and with an extra feature for saving Quran studies in an organized manner.
 
-[View Site Here]()
+[Have a look](https://qnotepad.netlify.com/)
 
 ## Intializing Firebase
 
