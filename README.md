@@ -4,3 +4,35 @@
 
 [View Site Here]()
 
+## Intializing Firebase
+
+After creating a firestore database in [Firebase](), create a file named `firebase.js` and your firebase configurations
+
+```
+import firebase from 'firebase/app';
+import 'firebase/firestore';
+import 'firebase/auth';
+
+var firebaseConfig = {
+	...
+};
+
+// Initialize Firebase
+firebase.initializeApp(firebaseConfig);
+const db = firebase.firestore();
+const firebaseAuth = firebase.auth();
+```
+
+After initializing, now create collections or/and sub-collections
+
+Creating a collections
+
+```
+const users = db.collection('users');
+```
+
+Creating a sub-collection
+
+```
+const userNotes = await users.doc(userId).collection('plain_notes')
+```
