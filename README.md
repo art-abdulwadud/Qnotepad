@@ -1,38 +1,73 @@
 # A fullstack web-app with React and Firebase(Firestore)
 
-[Qnotepad]() is a small web-app for saving normal plain notes and with an extra feature for saving Quran studies in an organized manner.
+[Qnotepad](https://qnotepad.netlify.com/) is a small web-app for saving normal plain notes and with an extra feature for saving Quran studies in an organized manner.
 
 [View Site Here]()
 
 ## Intializing Firebase
 
-After creating a firestore database in [Firebase](), create a file named `firebase.js` and your firebase configurations
+After creating a firestore database in [Firebase](https://firebase.google.com/), create a file named `firebase.js` and your firebase configurations
 
+```javascript
+import firebase from 'firebase/app';
+import 'firebase/firestore';
+
+var firebaseConfig = {
+	// write your configuraions here e.g
+	apiKey: '**********************************',
+	authDomain: '******************************',
+	databaseURL: '********************************',
+	projectId: '************',
+	storageBucket: '**************************',
+	messagingSenderId: '**********************',
+	appId: '**********************************',
+	measurementId: '****************************************'
+};
+
+// Initialize Firebase
+firebase.initializeApp(firebaseConfig);
+const db = firebase.firestore();
 ```
+
+## Creating user authentication
+
+After initializing, now create users collection and export it
+
+```javascript
+const users = db.collection('users');
+
+export { users };
+```
+
+In my case, for adding a new user to the `users` collection, i used context api.
+
+Okay, so in the `firebase.js` file, import `auth`, initialize it and then export it.
+
+```javascript
 import firebase from 'firebase/app';
 import 'firebase/firestore';
 import 'firebase/auth';
 
 var firebaseConfig = {
-	...
+	// write your configuraions here e.g
+	apiKey: '**********************************',
+	authDomain: '******************************',
+	databaseURL: '********************************',
+	projectId: '************',
+	storageBucket: '**************************',
+	messagingSenderId: '**********************',
+	appId: '**********************************',
+	measurementId: '****************************************'
 };
 
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 const db = firebase.firestore();
 const firebaseAuth = firebase.auth();
-```
 
-After initializing, now create collections or/and sub-collections
-
-Creating a collections
-
-```
 const users = db.collection('users');
+
+export { users, firebaseAuth };
 ```
 
-Creating a sub-collection
 
-```
-const userNotes = await users.doc(userId).collection('plain_notes')
-```
