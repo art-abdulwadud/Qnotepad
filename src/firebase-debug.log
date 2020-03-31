@@ -1,0 +1,16 @@
+[debug] [2020-01-30T14:47:19.679Z] ----------------------------------------------------------------------
+[debug] [2020-01-30T14:47:19.683Z] Command:       /usr/bin/node /usr/local/bin/firebase emulators:start --only firestore
+[debug] [2020-01-30T14:47:19.684Z] CLI Version:   7.12.1
+[debug] [2020-01-30T14:47:19.684Z] Platform:      linux
+[debug] [2020-01-30T14:47:19.684Z] Node Version:  v10.15.2
+[debug] [2020-01-30T14:47:19.733Z] Time:          Thu Jan 30 2020 17:47:19 GMT+0300 (East Africa Time)
+[debug] [2020-01-30T14:47:19.733Z] ----------------------------------------------------------------------
+[debug] [2020-01-30T14:47:19.734Z] 
+[debug] [2020-01-30T14:47:19.788Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2020-01-30T14:47:19.788Z] > authorizing via signed-in user
+[warn] ⚠  Could not find config (firebase.json) so using defaults.
+[info] i  emulators: Starting emulators: firestore
+[warn] ⚠  No Firestore rules file specified in firebase.json, using default rules.
+[info] i  firestore: Serving ALL traffic (including WebChannel) on http://localhost:8080
+[warn] ⚠  firestore: Support for WebChannel on a separate port (8081) is DEPRECATED and will go away soon. Please use port above instead.
+[info] i  firestore: downloading cloud-firestore-emulator-v1.10.2.jar...

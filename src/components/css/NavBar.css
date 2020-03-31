@@ -1,0 +1,50 @@
+.navbar {
+    background-color: #ffc857;
+    background-image: linear-gradient(316deg, #3e2f5b 0%, #ffc857 130%);
+    background-image: -webkit-linear-gradient(316deg, #3e2f5b 0%, #ffc857 130%);
+}
+.navbar-toggler{
+    background: transparent !important;
+    border-color: #3e2f5b !important;
+    transition: 0.4s;
+}
+.navbar-toggler:hover{
+    background: #3e2f5b !important;
+    background-image: linear-gradient(316deg, #3e2f5b 0%, #ffc857 74%) !important;
+}
+.navbar-brand{
+    font-family: 'Baloo Bhai', cursive;
+    font-size: calc(110% + 1vh);
+    color: #ffc857 !important;
+    cursor: pointer;
+}
+.nav-link{
+    font-family: 'Baloo Bhai', cursive;
+    font-size: calc(110% + 0.50vh);
+    color: #3e2f5b !important;
+    cursor: pointer;
+    transition: 0.4s;
+}
+.nav-link:hover{
+    color: white !important;
+}
+.dropdown-menu{
+    background-color: #ffc857;
+    background-image: linear-gradient(316deg, #3e2f5b 70%, #ffc857 30%);
+    background-image: -webkit-linear-gradient(316deg, #3e2f5b 70%, #ffc857 30%);
+    border: none !important;
+}
+.dropdown-item{
+    color: white !important;
+    font-family: 'Baloo Bhai', cursive;
+    font-size: calc(100% + 0.25vh);
+    transition: 0.4s;
+    cursor: pointer;
+}
+.dropdown-item:hover{
+    background: #ffc857;
+    color: #3e2f5b !important;
+}
+.dropdown-divider{
+    background: white !important;
+}

@@ -1,0 +1,425 @@
+
+/* Common classes and id */
+#visible{
+  display: block;
+}
+#hidden{
+  display: none;
+}
+.error-mssg{
+  background: red;
+  color: white;
+  border: 1px solid white;
+  border-radius: 10px;
+}
+.center-wrapper{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+.cursor{
+  cursor: pointer;
+}
+.title{
+  font-family: 'Lobster', cursive;
+  font-size: calc(110% + 2vh);
+}
+
+/* Plain Notes Preview */
+.page-title{
+  font-family: 'Baloo Bhai', cursive;
+  font-size: calc(110% + 3vh);
+  color: #ffc857;
+  border-bottom: 3px solid #ffc857;
+  border-left: 3px solid #ffc857;
+}
+.notes-preview{
+  display: grid;
+}
+.plain-notes-grid{
+    display: grid;
+    grid-template-rows: auto auto;
+    grid-template-areas: 
+      "topside"
+      "bottomside";
+}
+.notes-preview-wrapper{
+    background:#0F2027;
+    color: white;
+    font-family: 'Lobster', cursive;
+    font-size: calc(90% + 1vh);
+    border: 2px solid #ffc857;
+    border-radius: 5px;
+    border-bottom-right-radius: 20px;
+    transition: 0.5s;
+    grid-area: topside;
+    cursor: pointer;
+}
+.notes-preview-wrapper:hover{
+    color:#0F2027;
+    background: white;
+}
+.note-type-wrapper{
+  grid-area: bottomside;
+  width: 50%;
+  border: 2px solid #ffc857;
+  border-top: 1px solid transparent;
+  border-bottom-right-radius: 20px;
+  background: #0F2027;
+}
+.note-type{
+  color: #ffc857;
+  font-family: 'Lobster', cursive;
+  font-size: calc(90% + 0.5vh);
+  font-style: italic;
+}
+.add-wrapper{
+  color: rgb(255,215,0);
+  font-size: calc(90% + 1vh);
+}
+.add{
+  cursor: pointer;
+}
+
+.note-wrapper{
+  border: 1px solid white;
+  background: #0F2027;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to top, #2C5364, #203A43, #0F2027);
+  background: linear-gradient(to top, #2C5364, #203A43, #0F2027);
+  color: white;
+  border-bottom-right-radius: 10px;
+  cursor: pointer;
+}
+.note-wrapper:hover{
+  background: #2C5364;
+  border: 1px solid #0F2027;
+}
+.type-name{
+  font-style: italic;
+  font-size: calc(80% + 0.25vh);
+  font-weight: bold;
+  color: rgb(255,215,0);
+}
+.note-text-area{
+  min-width: 90%;
+  min-height: 20vh;
+}
+.topic-heading{
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: bold;
+}
+.p-wrapper{
+  white-space: nowrap;
+  overflow:hidden !important;
+  text-overflow: ellipsis;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: calc(100% + 0.5vh);
+}
+.paragraphs{
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: calc(90% + 0.5vh);
+}
+.greyish{
+  color: #0F2027 !important;
+}
+.notes-notes-wrapper{
+    background:#0F2027;
+    color: white;
+    font-family: 'Lobster', cursive;
+    font-size: calc(90% + 1vh);
+    border: 2px solid #ffc857;
+    border-radius: 5px;
+    border-bottom-right-radius: 20px;
+}
+.delete{
+  max-width: 200px;
+  border: 2px solid #ffc857;
+}
+.editor{
+  max-width: 250px;
+  border: 2px solid white;
+  border-bottom-right-radius: 10px;
+  background: #ffc857;
+}
+/* Plain Notes Form */
+.add-wrapper{
+  font-size: calc(90% + 1vh);
+}
+.add{
+  cursor: pointer;
+  color: #0F2027;
+}
+.add:hover{
+  color: #ffc857;
+}
+.title-input{
+  font-size: calc(90% + 1vh);
+  font-family: 'Baloo Bhai', cursive;
+  border: 1px solid #ffc857;
+  border-radius: 10px;
+  width: 80%;
+}
+.submit-title{
+  font-size: calc(90% + 1vh);
+  font-family: 'Baloo Bhai', cursive;
+  border: 1px solid #ffc857;
+}
+.submit-title:hover{
+  background: #0F2027;
+  color: #ffc857;
+}
+.edit{
+  font-size: calc(90% + 0.5vh);
+  font-family: 'Baloo Bhai', cursive;
+  color: #0F2027;
+  cursor: pointer;
+}
+/* Surah navigation */
+.surah-nav-list{
+  list-style: none;
+}
+.surah-nav-item{
+  display: inline;
+  font-size: calc(100% + 0.5vh);
+  font-family: 'Baloo Bhai', cursive;
+  color: rgba(62,47,91, 0.4);
+  cursor: pointer;
+}
+#item-active {
+  border-bottom: 3px solid #ffc857;
+  border-left: 3px solid #ffc857;
+  padding: 5px;
+  color: #0F2027;
+}
+
+/* Plain notes */
+.edit:hover{
+  color: #ffc857;
+}
+#content-input{
+  min-height: 60vh;
+  width: 100%;
+  font-size: calc(90% + 0.5vh);
+}
+
+/* Modals */ 
+.modal{
+  display: block;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background: rgba(62,47,91, 0.6);
+  padding-top: 50px;
+  overflow: auto;
+}
+.modal-content{
+  background: #2C5364;
+  max-width: 95%;
+}
+.close{
+  background: #ffc857;
+  cursor: pointer;
+}
+.content-input{
+  min-height: 60vh;
+  width: 100%;
+  font-size: calc(90% + 0.5vh);
+}
+.back-arrow{
+  color: #0F2027;
+  font-size: calc(110% + 1vh);
+  border-bottom: 2px solid #0F2027;
+  cursor: pointer;
+}
+/* Pre-loader */
+.pre-loader-wrapper{
+  background: rgba(62,47,91, 0.2) !important;
+}
+.pre-loader-content{
+  margin-top: 20%;
+}
+.pre-loader{
+  border: 16px solid transparent;
+  height: 150px;
+  width: 150px;
+  border-top: 16px solid #ffc857;
+  border-bottom: 16px solid #0F2027;
+  border-radius: 50%;
+  -webkit-animation: spin 2s linear infinite;
+  animation: spin 2s linear infinite;
+}
+
+@-webkit-keyframes spin {
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+/* Custom Scrollbar */
+::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background: rgba(62,47,91, 0.8); 
+  background: linear-gradient(316deg, #3e2f5b 0%, #ffc857 90%);
+  background: -webkit-linear-gradient(316deg, #3e2f5b 0%, #ffc857 90%);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(62,47,91, 0.4);
+  background: linear-gradient(316deg, rgba(62,47,91, 0.9) 0%, rgba(255,200,87, 0.5) 90%);
+  background: -webkit-linear-gradient(316deg, rgba(62,47,91, 0.9) 0%, rgba(255,200,87, 0.5) 90%);
+}
+::-webkit-scrollbar {
+  width: 10px;
+}
+/* Sign up and Login */
+.page-body{
+  display: flex;
+  min-height: 100vh;
+  background-color: #3e2f5b;
+  align-items: center;
+  justify-content: center;
+}
+.body-wrapper{
+  background: rgba(255,200,87, 0.7);
+  border-radius: 20px;
+  min-width: 60%;
+}
+.options{
+  display: grid;
+  grid-template-columns: 50% 50%;
+  grid-template-rows: auto;
+  grid-template-areas: 
+  "left-side right-side";
+  text-align: center;
+  font-weight: 800;
+  cursor: pointer;
+  color: #ffc857;
+}
+.left-option{
+  grid-area: left-side;
+  font-size: calc(100% + 1vh);
+  background: #3e2f5b;
+  border-top-left-radius: 20px;
+  border-right: 1px solid #ffc857;
+}
+.right-option{
+  grid-area: right-side;
+  font-size: calc(100% + 1vh);
+  background: #3e2f5b;
+  border-top-right-radius: 20px;
+}
+#option-not-active{
+  background: rgba(62,47,91, 0.5);
+  color: rgba(255,200,87, 0.5);
+}
+.option-title{
+  font-family: 'Baloo Bhai', cursive;
+  font-size: calc(110% + 1.5vh);
+}
+
+/*
+  ##Device = Desktops
+*/
+
+@media (min-width: 1281px) {
+  .notes-preview{
+    grid-template-columns: auto auto;
+  }
+  .notes-sec-grid{
+    display: grid;
+    grid-template-columns: auto auto;
+  }
+  .p-wrapper{
+    max-width: 70rem;
+  }
+}
+
+/*
+##Device = Laptops, Desktops
+*/
+
+@media (min-width: 1025px) and (max-width: 1280px) {
+  .notes-preview{
+    grid-template-columns: auto auto;
+  }
+  .notes-sec-grid{
+    display: grid;
+    grid-template-columns: auto auto;
+  }
+  .p-wrapper{
+    max-width: 30rem;
+  }
+}
+
+/*
+##Device = Tablets, Ipads (portrait)
+*/
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  .notes-preview{
+    grid-template-columns: auto auto;
+  }
+  .notes-sec-grid{
+    display: grid;
+    grid-template-columns: auto auto;
+  }
+  .p-wrapper{
+    max-width: 20rem;
+  }
+}
+
+/*
+##Device = Tablets, Ipads (landscape)
+*/
+
+@media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
+  .notes-preview{
+    grid-template-columns: auto auto;
+  }
+  .notes-sec-grid{
+    display: grid;
+    grid-template-columns: auto auto;
+  }
+  .p-wrapper{
+    max-width: 18rem;
+  }
+}
+
+/*
+##Device = Low Resolution Tablets, Mobiles (Landscape)
+*/
+
+@media (min-width: 481px) and (max-width: 767px) {
+  .notes-preview{
+    grid-template-columns: auto;
+  }
+  .notes-sec-grid{
+    display: grid;
+    grid-template-columns: auto;
+  }
+  .p-wrapper{
+    max-width: 25rem;
+  }
+}
+
+/*
+##Device = Most of the Smartphones Mobiles (Portrait)
+*/
+
+@media (max-width: 480px) {
+  .notes-preview{
+    grid-template-columns: auto;
+  }
+  .notes-sec-grid{
+    display: grid;
+    grid-template-columns: auto;
+  }
+  .p-wrapper{
+    max-width: 13rem;
+  }
+}

@@ -1,0 +1,161 @@
+.welcome-grid-wrapper{
+    display: grid;
+    background: #3e2f5b;
+    min-height: 50vh;
+    grid-template-columns: auto;
+    grid-template-rows: auto;
+    grid-template-areas: "cover";
+    overflow: hidden;
+}
+.video-wrapper{
+    grid-area: cover;
+    min-width: 100%;
+    min-height: 100%;
+    z-index: 0;
+}
+.video{
+    background-size: cover;
+    min-width: 100%;
+    min-height: 100%;
+    padding: 0;
+}
+.overlay{
+    grid-area: cover;
+    background-color: rgba(62,47,91, 0.4);
+    overflow: hidden;
+    height: 100%;
+    z-index: 1;
+}
+.inner-grid-wrapper{
+    grid-area: cover;
+    z-index: 2;
+    display: grid;
+}
+.text-wrapper{
+    grid-area: first-text;
+}
+.notes-illustration{
+    grid-area: first-pic;
+}
+.text-wrapper-two{
+    grid-area: second-text;
+}
+.surahs-illustration{
+    grid-area: second-pic;
+}
+.notes-pic{
+    height: 40vh;
+    width: 100%;
+}
+.intro-heading{
+    font-size: calc(110% + 3vh);
+    font-family: 'Lobster', cursive;
+    color: #ffc857;
+}
+.intro-text{
+    font-family: 'Baloo Bhai', cursive;
+    font-size: calc(100% + 1vh);
+    color: white;
+}
+.btn{
+    color: #3e2f5b;
+    background: #ffc857;
+    background: linear-gradient(316deg, #3e2f5b 0%, #ffc857 90%);
+    background: -webkit-linear-gradient(316deg, #3e2f5b 0%, #ffc857 90%);
+    border: 2px solid #ffc857 !important;
+    transition: 0.4s;
+    font-family: 'Baloo Bhai', cursive;
+    font-size: calc(100% + 0.50vh);
+}
+.btn:hover{
+    background: rgba(0,0,0,0.4);
+    color: white;
+}
+/*
+  ##Device = Desktops
+*/
+
+@media (min-width: 1281px) {
+    .inner-grid-wrapper{
+        grid-template-columns: auto auto;
+        grid-template-rows: auto auto;
+        grid-template-areas: 
+        "first-text first-pic"
+        "second-pic second-text";
+    }
+  }
+  
+  /*
+  ##Device = Laptops, Desktops
+  */
+  
+  @media (min-width: 1025px) and (max-width: 1280px) {
+    .inner-grid-wrapper{
+        grid-template-columns: auto auto;
+        grid-template-rows: auto auto;
+        grid-template-areas: 
+        "first-text first-pic"
+        "second-pic second-text";
+    }
+  }
+  
+  /*
+  ##Device = Tablets, Ipads (portrait)
+  */
+  
+  @media (min-width: 768px) and (max-width: 1024px) {
+    .inner-grid-wrapper{
+        grid-template-columns: auto auto;
+        grid-template-rows: auto auto;
+        grid-template-areas: 
+        "first-text first-pic"
+        "second-pic second-text";
+    }
+  }
+  
+  /*
+  ##Device = Tablets, Ipads (landscape)
+  */
+  
+  @media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
+    .inner-grid-wrapper{
+        grid-template-columns: auto auto;
+        grid-template-rows: auto auto;
+        grid-template-areas: 
+        "first-text first-pic"
+        "second-pic second-text";
+    }
+  }
+  
+  /*
+  ##Device = Low Resolution Tablets, Mobiles (Landscape)
+  */
+  
+  @media (min-width: 481px) and (max-width: 767px) {
+    .inner-grid-wrapper{
+        grid-template-columns: auto;
+        grid-template-rows: auto auto auto auto;
+        grid-template-areas: 
+        "first-pic"
+        "first-text"
+        "second-pic"
+        "second-text";
+    }
+  }
+  
+  /*
+  ##Device = Most of the Smartphones Mobiles (Portrait)
+  */
+  
+  @media (max-width: 480px) {
+    .inner-grid-wrapper{
+        grid-template-columns: auto;
+        grid-template-rows: auto auto auto auto;
+        grid-template-areas: 
+        "first-pic"
+        "first-text"
+        "second-pic"
+        "second-text";
+    }
+  }
+  
