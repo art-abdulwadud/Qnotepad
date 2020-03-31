@@ -1,6 +1,6 @@
 # A fullstack web-app with React and Firebase(Firestore)
 
-[Qnotepad](https://qnotepad.netlify.com/) is a small web-app for saving normal plain notes and with an extra feature for saving Quran studies in an organized manner.
+[Qnotepad](https://qnotepad.netlify.com/) is a small web-app for saving normal plain notes and with an extra feature for saving Quran studies in an organized manner, created simply for educational purposes.
 
 [Have a look](https://qnotepad.netlify.com/)
 
@@ -39,8 +39,6 @@ const users = db.collection('users');
 export { users };
 ```
 
-In my case, for adding a new user to the `users` collection, i used context api.
-
 Okay, so in the `firebase.js` file, import `auth`, initialize it and then export it.
 
 ```javascript
@@ -70,4 +68,103 @@ const users = db.collection('users');
 export { users, firebaseAuth };
 ```
 
+In my case, for adding a new user to the `users` collection, i used context api. React Context API is a way to essentially create global variables that can be passed around in a React app.
+
+Create a component named `Context.js`, or in my case, `AuthContext.js`. Create context, provider, consumer and states.
+
+```javascript
+import React, { Component } from 'react';
+import { firebaseAuth } from '../firebase';
+import { withRouter } from 'react-router-dom';
+
+const AuthContext = React.createContext();
+
+class AuthProvider extends Component {
+	state = {
+		user: {},
+		errorMessage: ''
+	};
+
+	UNSAFE_componentWillMount() {
+		firebaseAuth.onAuthStateChanged(user => {
+			if (user) {
+				this.setState({
+					user: {
+						id: user.uid,
+						email: user.email
+					}
+				});
+			} else {
+			}
+		});
+	}
+
+	signUp = async (email, password, e) => {
+		try {
+			e.preventDefault();
+			await firebaseAuth.createUserWithEmailAndPassword(email, password);
+			this.props.history.push(`/${this.state.user.id}/home`);
+			this.setState({
+				errorMessage: ''
+			});
+		} catch (error) {
+			this.setState({
+				errorMessage: error.message
+			});
+		}
+	};
+
+	logIn = async (email, password, e) => {
+		try {
+			e.preventDefault();
+			await firebaseAuth.signInWithEmailAndPassword(email, password);
+			this.props.history.push(`/${this.state.user.id}/home`);
+			this.setState({
+				errorMessage: ''
+			});
+		} catch (error) {
+			this.setState({
+				errorMessage: error.message
+			});
+		}
+	};
+
+	logOut = async () => {
+		try {
+			await firebaseAuth.signOut();
+			this.setState({ user: {} });
+			this.props.history.push(`/`);
+		} catch (error) {
+			this.setState({
+				errorMessage: error.message
+			});
+		}
+	};
+
+	render() {
+		return (
+			<AuthContext.Provider
+				value={{
+					user: this.state.user,
+					signUp: this.signUp,
+					logIn: this.logIn,
+					logOut: this.logOut,
+					errorMessage: this.state.errorMessage
+				}}
+			>
+				{this.props.children}
+			</AuthContext.Provider>
+		);
+	}
+}
+
+const AuthConsumer = AuthContext.Consumer;
+```
+
+Export the provide and consumer.
+
+```javascript
+export default withRouter(AuthProvider);
+export { AuthConsumer };
+```
 
