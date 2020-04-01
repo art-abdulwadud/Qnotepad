@@ -81,8 +81,7 @@ const AuthContext = React.createContext();
 
 class AuthProvider extends Component {
 	state = {
-		user: {},
-		errorMessage: ''
+		user: {}
 	};
 
 	UNSAFE_componentWillMount() {
@@ -99,57 +98,11 @@ class AuthProvider extends Component {
 		});
 	}
 
-	signUp = async (email, password, e) => {
-		try {
-			e.preventDefault();
-			await firebaseAuth.createUserWithEmailAndPassword(email, password);
-			this.props.history.push(`/${this.state.user.id}/home`);
-			this.setState({
-				errorMessage: ''
-			});
-		} catch (error) {
-			this.setState({
-				errorMessage: error.message
-			});
-		}
-	};
-
-	logIn = async (email, password, e) => {
-		try {
-			e.preventDefault();
-			await firebaseAuth.signInWithEmailAndPassword(email, password);
-			this.props.history.push(`/${this.state.user.id}/home`);
-			this.setState({
-				errorMessage: ''
-			});
-		} catch (error) {
-			this.setState({
-				errorMessage: error.message
-			});
-		}
-	};
-
-	logOut = async () => {
-		try {
-			await firebaseAuth.signOut();
-			this.setState({ user: {} });
-			this.props.history.push(`/`);
-		} catch (error) {
-			this.setState({
-				errorMessage: error.message
-			});
-		}
-	};
-
 	render() {
 		return (
 			<AuthContext.Provider
 				value={{
-					user: this.state.user,
-					signUp: this.signUp,
-					logIn: this.logIn,
-					logOut: this.logOut,
-					errorMessage: this.state.errorMessage
+					user: this.state.user
 				}}
 			>
 				{this.props.children}
