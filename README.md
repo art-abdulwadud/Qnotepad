@@ -81,7 +81,8 @@ const AuthContext = React.createContext();
 
 class AuthProvider extends Component {
 	state = {
-		user: {}
+		user: {},
+		errorMessage: ''
 	};
 
 	UNSAFE_componentWillMount() {
@@ -102,7 +103,8 @@ class AuthProvider extends Component {
 		return (
 			<AuthContext.Provider
 				value={{
-					user: this.state.user
+					user: this.state.user,
+					errorMessage: this.state.errorMessage
 				}}
 			>
 				{this.props.children}
@@ -175,6 +177,80 @@ class NavBar extends React.Component {
 }
 
 export default withRouter(NavBar);
+```
+
+Creating a sign up method
+
+```javascript
+signUp = async (email, password, e) => {
+	try {
+		e.preventDefault();
+		await firebaseAuth.createUserWithEmailAndPassword(email, password);
+		// redirect to home page after sign up
+		this.props.history.push(`/${this.state.user.id}/home`);
+		this.setState({
+			errorMessage: ''
+		});
+	} catch (error) {
+		this.setState({
+			errorMessage: error.message
+		});
+	}
+};
+```
+
+Then add it to `value` in context provider
+
+```javascript
+render() {
+        return (
+            <AuthContext.Provider
+                value={{
+                    user: this.state.user,
+                    signUp: this.signUp,
+                    errorMessage: this.state.errorMessage
+                }}
+            >
+                {this.props.children}
+            </AuthContext.Provider>
+        );
+    }
+```
+
+Do the same for the login method
+
+```javascript
+logIn = async (email, password, e) => {
+	try {
+		e.preventDefault();
+		await firebaseAuth.signInWithEmailAndPassword(email, password);
+		// redirect to home page after login
+		this.props.history.push(`/${this.state.user.id}/home`);
+		this.setState({
+			errorMessage: ''
+		});
+	} catch (error) {
+		this.setState({
+			errorMessage: error.message
+		});
+	}
+};
+```
+
+And for the logout method as well
+
+```javascript
+logOut = async () => {
+	try {
+		await firebaseAuth.signOut();
+		this.setState({ user: {} });
+		this.props.history.push(`/`);
+	} catch (error) {
+		this.setState({
+			errorMessage: error.message
+		});
+	}
+};
 ```
 
 ## License
