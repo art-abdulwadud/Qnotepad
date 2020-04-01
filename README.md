@@ -168,3 +168,68 @@ export default withRouter(AuthProvider);
 export { AuthConsumer };
 ```
 
+In the main component, in my case, `App.js`, import the context provider
+
+```javascript
+import AuthProvider from './components/AuthContext';
+
+class App extends React.Component {
+	render() {
+		return (
+			<div className="root-class">
+				<BrowserRouter>
+					<AuthProvider>// children components</AuthProvider>
+				</BrowserRouter>
+			</div>
+		);
+	}
+}
+
+export default App;
+```
+
+Finally, using context consumer in a child component
+
+```javascript
+import React from 'react';
+import logo from '../components/img/logo.png';
+import '../components/css/NavBar.css';
+import { withRouter } from 'react-router-dom';
+import { AuthConsumer } from '../components/AuthContext';
+
+class NavBar extends React.Component {
+	goToHome = userId => {
+		this.props.history.push({
+			pathname: `/${userId}/home`
+		});
+	};
+	render() {
+		return (
+			<AuthConsumer>
+				{({ user }) => (
+					<>
+						<nav className="navbar navbar-expand-sm navbar-light">
+							<span className="navbar-brand text-white" onClick={() => this.goToHome(user.id)}>
+								<img src={logo} width="40" height="30" alt="" />
+								Notepad
+							</span>
+						</nav>
+					</>
+				)}
+			</AuthConsumer>
+		);
+	}
+}
+
+export default withRouter(NavBar);
+```
+
+## License
+
+MIT Copyright (c) 2020 Abdiwadud Mahamad
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
